@@ -1,0 +1,72 @@
+﻿@model ML.Doctor
+
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registro de Doctores</h1>
+
+@using (Html.BeginForm("Form", "Doctor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-1" style="display: none;">
+            @Html.TextBoxFor(model => model.IdDoctor, new { @class = "hidden form-control", autocomplete = "off" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Nombre)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.AP, "Apellido Paterno: ")
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.AP, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AP, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.AM, "Apellido Materno")
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.AM, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AM, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Edad)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Edad, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Edad, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Especialidad)
+                @Html.DropDownListFor(model => model.Especialidad.IdEspecialidad, new SelectList(Model.Especialidad.Especialidades, "IdEspecialidad", "EspecialidadNombre"), "Seleccione una Especialidad", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="glyphicon-up">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <br />
+                    <br />
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                    @Html.ActionLink("Regresar", "GetAll", "Doctor", htmlAttributes: new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

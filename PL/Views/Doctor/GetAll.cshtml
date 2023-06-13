@@ -1,0 +1,44 @@
+﻿@model ML.Doctor
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>DOCTORES REGISTRADOS</h1>
+
+<div style="float:right;">
+    @Html.ActionLink("Agregar", "Form", "Doctor", htmlAttributes: new { @class = "btn btn-success" })
+</div>
+
+<br />
+<br />
+<br />
+
+<table class="table table-hover table-striped table-bordered table-responsive">
+    <thead>
+        <tr class="table-secondary">
+            <td style="text-align:center">Editar</td>
+            <td style="display :none;">id</td>
+            <td style="text-align:center">Doctor</td>
+            <td style="text-align:center">Edad</td>
+            <td style="text-align:center">Especialidad</td>
+            <td style="text-align:center">Eliminar</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (ML.Doctor doctor in Model.Doctores)
+        {
+            <tr>
+                <td style="text-align: center; vertical-align: middle;"><a class="btn btn-warning glyphicon  glyphicon glyphicon-cog" href="@Url.Action("Form", "Doctor", new { IdDoctor = doctor.IdDoctor})"><i class="bi bi-pencil-square" style="color: ivory"></i></a></td>
+                <td style="display :none;">@doctor.IdDoctor </td>
+                <td style="text-align:center">@doctor.NombreCompleto</td>
+                <td style="text-align:center">@doctor.Edad</td>
+                <td style="text-align:center">@doctor.Especialidad.EspecialidadNombre</td>
+                <td style="text-align: center; vertical-align: middle;"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Doctor", new { IdDoctor = doctor.IdDoctor})"></a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
