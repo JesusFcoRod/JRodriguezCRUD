@@ -1,0 +1,47 @@
+﻿@model ML.Triangulo
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Triangulos Registrados</h1>
+
+<div style="float:right;">
+    @Html.ActionLink("Agregar", "Form", "Triangulo", htmlAttributes: new { @class = "btn btn-success" })
+</div>
+
+<br />
+<br />
+<br />
+
+<table class="table table-hover table-striped table-bordered table-responsive">
+    <thead>
+        <tr class="table-secondary">
+            <td style="text-align:center">Editar</td>
+            <td style="display :none;">id</td>
+            <td style="text-align:center">Tipo</td>
+            <td style="text-align:center">Medida Lado</td>
+            <td style="text-align:center">Perimetro</td>
+            <td style="text-align:center">Area</td>
+            <td style="text-align:center">Eliminar</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (ML.Triangulo tringulo in Model.Triangulos)
+        {
+            <tr>
+                <td style="text-align: center; vertical-align: middle;"><a class="btn btn-warning glyphicon  glyphicon glyphicon-cog" href="@Url.Action("Form", "Triangulo", new { IdTriangulo = tringulo.IdTriangulo})"><i class="bi bi-pencil-square" style="color: ivory"></i></a></td>
+                <td style="display :none;">@tringulo.IdTriangulo </td>
+                <td style="text-align:center">@tringulo.Tipo</td>
+                <td style="text-align:center">@tringulo.Lado</td>
+                <td style="text-align:center">@tringulo.Perimetro</td>
+                <td style="text-align:center">@tringulo.Area</td>
+                <td style="text-align: center; vertical-align: middle;"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Triangulo", new { IdTriangulo = tringulo.IdTriangulo})"></a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+

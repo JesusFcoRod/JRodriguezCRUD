@@ -9,6 +9,5 @@ public partial class Especialidad
 
     public string? Nombre { get; set; }
 
- 
     public virtual ICollection<Doctor> Doctors { get; set; } = new List<Doctor>();
 }

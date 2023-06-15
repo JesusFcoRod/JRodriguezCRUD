@@ -6,7 +6,7 @@ namespace PL.Controllers
     {
         [HttpGet]
 
-        public ActionResult GetAll()//En 1 hora solo termine hasta aqui.
+        public ActionResult GetAll()//En 1 hora solo termine hasta aqui D:
         {
             ML.Doctor doctor = new ML.Doctor();
             ML.Result result = BL.Doctor.GetAll();

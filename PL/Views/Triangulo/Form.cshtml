@@ -1,0 +1,65 @@
+﻿@model ML.Triangulo
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Registro de Triangulos</h1>
+
+@using (Html.BeginForm("Form", "Triangulo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-1" style="display: none;">
+            @Html.TextBoxFor(model => model.IdTriangulo, new { @class = "hidden form-control", autocomplete = "off" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Tipo)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Tipo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Tipo, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Lado)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Lado, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Lado, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Perimetro)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Perimetro, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Perimetro, null, new { @class = "text-danger", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Area)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Area, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Area, null, new { @class = "text-danger", @disabled = "disabled"})
+            </div>
+        </div>
+
+
+        <div class="glyphicon-up">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <br />
+                    <br />
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                    @Html.ActionLink("Regresar", "GetAll", "Triangulo", htmlAttributes: new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
